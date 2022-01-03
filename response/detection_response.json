@@ -1,0 +1,40 @@
+{
+    "statusCode": 200,
+    "body": {
+        "flights": [{
+            "flight_id": 438956,
+            "drone_id": "12128d308bb58b475af4e755ef021976",
+            "area_ids": [588, 613, 614, 660, 817, 864],
+            "start_time": "2021-12-10 08:07:21",
+            "end_time": "",
+            "classification": "Unknown",
+            "name": "12128d308bb58b475af4e755ef021976",
+            "altitudes": [null, null, null],
+            "detections": [{
+                "drone_id": "12128d308bb58b475af4e755ef021976",
+                "timestamp": "2021-12-10 08:07:21",
+                "protocol": "OcuSync",
+                "drone_coordinate": [35.145921, -90.051056],
+                "drone_altitude": 68.0,
+                "drone_height": 12.9,
+                "drone_speed": 0.03,
+                "drone_orientation": [-23711, -16557, -14845],
+                "home_coordinate": [35.145749, -90.050266],
+                "pilot_coordinate": [35.145726, -90.050334],
+                "pilot_id": "772162662365417472"
+            }, {
+                "drone_id": "12128d308bb58b475af4e755ef021976",
+                "timestamp": "2021-12-10 08:07:22",
+                "protocol": "OcuSync",
+                "drone_coordinate": [35.145921, -90.051056],
+                "drone_altitude": 68.0,
+                "drone_height": 12.9,
+                "drone_speed": 0.03,
+                "drone_orientation": [-23711, -16557, -14845],
+                "home_coordinate": [35.145749, -90.050266],
+                "pilot_coordinate": [35.145726, -90.050334],
+                "pilot_id": "772162662365417472"
+            }]
+        }]
+    }
+}
