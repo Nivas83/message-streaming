@@ -5,20 +5,18 @@ import json, time
 from datetime import datetime
 from faust.types import settings
 # import socketio
+# import engineio
 # import eventlet
 
-# settings.PRODUCER_MAX_REQUEST_SIZE = 1_000_000_000
 
 #Create Faust Application
 app = faust.App('producer', broker='kafka://'+const.SERVER, topic_partitions=10, internal=True) #, producer_max_request_size=3173440261
 topic = app.topic(const.TOPIC_NAME, partitions=10, internal=True, value_serializer='json')
 
 
-
-# sio = socketio.Server()
-# socketapp = socketio.WSGIApp(sio)
-
-
+#Socket Application
+# sio = socketio.Server(cors_allowed_origins='*')
+# socketApp = socketio.WSGIApp(sio)
 
 
 
@@ -27,6 +25,7 @@ def detectionResponse():
     f = open("response/response1.json")
     data = json.load(f)
     return data
+
 
 #Streaming data when application starts
 @app.task()
@@ -43,11 +42,11 @@ async def on_start():
         value["no"] = index
         print(index)
         try:
-            await topic.send(value=value, partition=p)
+            await topic.send(value=value, partition=p)            
         except Exception as e:
             print(e)
         index += 1
-        time.sleep(5)
+        time.sleep(1)
 
 
 # @app.agent(topic)
@@ -64,6 +63,26 @@ async def on_start():
 #             print('No message received')
 
 
-if __name__ == '__main__':
-    app.main()
+#Socket Events
+# @sio.event
+# def connect(sid, environ, auth):
+#     print('connect ', sid)
+#     for i in range(100):
+#         sio.emit('livemap', {"message":"hello"+str(i)})
+#         #time.sleep(3)
+
+
+# @sio.on('livemap')
+# def livemap(sid):
+#     print('connect ', sid)
+#     sio.emit('livemap', {"message":"hello"})
+
+# @sio.on('disconnect')
+# def disconnect(sid):
+#     print('disconnect ', sid)
+
+
+
+# if __name__ == '__main__':
+    # eventlet.wsgi.server(eventlet.listen(('localhost', 3000)), socketApp)
 

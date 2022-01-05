@@ -46,3 +46,13 @@ Terminal 4:
     npm start
 
 Open console to view received events
+
+
+
+
+
+
+
+
+#Create Topic
+bin/kafka-topics.sh --create --partitions 10 --replication-factor 1 --topic live_detection_topic --bootstrap-server localhost:9092;
